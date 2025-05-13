@@ -43,6 +43,12 @@ class User
         return $this->db->run($sql, $params)->fetch();
     }
 
+    public function getUserByEmail ($email) {
+        $sql = "SELECT email FROM users WHERE email = :email";
+        $params = [':email' => $email];
+        return $this->db->run($sql, $params)->fetchAll();
+    }
+
     public function login($email, $password_hash)
     {
         $userDB = $this->db->run("SELECT * FROM users WHERE email = :email", [
@@ -66,7 +72,7 @@ class User
 
         if ($coordinatorDB && password_verify($password_hash, $coordinatorDB['password_hash'])) {
             
-            $_SESSION["email"] = $password_hash["email"];
+            $_SESSION["email"] = $coordinatorDB["email"];
             return true;
         } else {
             return false;

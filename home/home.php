@@ -27,7 +27,7 @@
 
       <nav>
         <ul>
-          <li><a href="#">Vluchten</a></li>
+          <li><a href="../flight_schedules/view_schedules.php">Vluchten</a></li>
           <li><a href="#">Services</a></li>
           <li><a href="#">Contact</a></li>
           <li><a href="../user/login-user.php">Account</a></li>
