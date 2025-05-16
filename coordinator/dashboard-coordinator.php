@@ -56,7 +56,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <h1>Welkom  <?= htmlspecialchars($email)  ?> !</h1>
 
 
-<li><a href="../user/logout.php">uitloggen</a></li>
+  <div class="uitloggen">
+    <li><a href="../user/logout.php">uitloggen</a></li>
+
+  </div>
+
   <?php if (!empty($message)): ?>
       <p><?= htmlspecialchars($message) ?></p>
   <?php endif; ?>
