@@ -4,7 +4,7 @@ class Database
     public $pdo;   
     public $stmt;  
 
-    public function __construct($db ="flyway", $host = 'localhost:3308', $user = 'root', $pass = '')
+    public function __construct($db = "flyway", $host = 'localhost:3308', $user = 'root', $pass = '')
     {
         try {
             $dsn = "mysql:host=$host;dbname=$db;charset=utf8mb4";
@@ -15,7 +15,6 @@ class Database
         }
     }
 
-   
     public function run($query, $params = null)
     {
         try {
@@ -30,5 +29,11 @@ class Database
             echo "Execution error: " . $e->getMessage();
             return false;
         }
+    }
+
+    // ✅ Hier toevoegen
+    public function lastInsertId()
+    {
+        return $this->pdo->lastInsertId();
     }
 }

@@ -38,4 +38,12 @@ $params = [
     return $this->db->run($sql)->fetchAll();
   }
 
+  public function getFlightScheduleById($schedule_id) {
+    $sql = "SELECT * FROM flight_schedules WHERE schedule_id = :schedule_id";
+    $params = ["schedule_id" => $schedule_id];
+
+    $stmt = $this->db->run($sql, $params);
+    return $stmt->fetch(PDO::FETCH_ASSOC) ?: null;
+  }
+
 }
