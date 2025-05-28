@@ -67,12 +67,19 @@ $flight_schedules = $schedule->getAllSchedules();
 
   <?php foreach ($flight_schedules as $flight_schedule):?>
     <tr>
-      <td><?= htmlspecialchars($flight_schedule['departure_datetime']); ?></td>
-      <td><?= htmlspecialchars($flight_schedule['destination']); ?></td>
+       <td><?= htmlspecialchars($flight_schedule['departure_datetime']); ?></td>
+    <td><?= htmlspecialchars($flight_schedule['destination']); ?></td>
+    <td>
+       <td>
+      <a href="view_scheduleDetails.php?id=<?= urlencode($flight_schedule['schedule_id']); ?>">
+        ➜
+      </a>
+    </td>
     </tr>
 
     <?php endforeach; ?>
 
+  
   </tbody>
  </table>
 </div>
