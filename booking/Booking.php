@@ -5,7 +5,7 @@ class Booking {
   private $db;
   public function __construct() {
     $this->db = new Database();
-    session_start();
+    // session_start();
   }
 
 
@@ -31,6 +31,12 @@ public function getBookingById($booking_id) {
 
 public function getLastInsertId() {
     return $this->db->lastInsertId();
+}
+
+public function getAllBookings() {
+  $sql = "SELECT * FROM booking";
+  return $this->db->run($sql)->fetchAll();
+
 }
 
 

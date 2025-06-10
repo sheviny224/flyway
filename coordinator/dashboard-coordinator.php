@@ -2,6 +2,7 @@
 include_once "../flight_schedules/Schedule.php";
 include_once "../user/User.php";
 include_once "../Flight/Flight.php";
+include_once "../booking/Booking.php";
 
 
 // session_start();
@@ -16,12 +17,14 @@ $flight = new Flight();
 
 // hier haal ik de methode uit de flight class op
 $flight_ids = $flight->getAllFlightId();
-
+$booking = new Booking ();
 // check of user is ingelogd
 if (!$user->isLoggedIn()) {
     header("Location: login.php");
     exit;
 }
+
+$bookings = $booking->getAllBookings();
 
 $email = $_SESSION["email"];
 
@@ -102,5 +105,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   <button type="submit">Schedule toevoegen</button>
 </form>
+
+
+  <h1>Alle boekingen</h1>
+   <table border="1" cellpadding="5" cellspacing="0">
+    <thead>
+      <tr>
+        <th>schedule_id</th>
+        <th>name</th>
+        <th>email</th>
+        <th>seat_type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php foreach ($bookings as $booking): ?>
+        <tr>
+          <td><?= htmlspecialchars($booking['schedule_id']); ?></td>
+          <td><?= htmlspecialchars($booking['name']); ?></td>
+          <td><?= htmlspecialchars($booking['email']); ?></td>
+          <td><?= htmlspecialchars($booking['seat_type']); ?></td>
+        </tr>
+      <?php endforeach; ?>
+    </tbody>
+  </table>
 </body>
 </html>
