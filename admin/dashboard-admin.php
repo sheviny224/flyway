@@ -40,9 +40,15 @@ if (isset($_GET['edit'])) {
 <head>
   <meta charset="UTF-8">
   <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="../css/coordinator.css">
 </head>
 <body>
   <h1>Hallo admin</h1>
+   <div class="uitloggen">
+    <li><a href="../user/logout.php">uitloggen</a></li>
+
+  </div>
+
   <h2>Alle geregistreerde coördinatoren</h2>
 
   <table border="1" cellpadding="5" cellspacing="0">
